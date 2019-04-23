@@ -170,7 +170,7 @@ function drawCar() {
 function updatePlayer() {
     // Moving Forward Logic.         
     // 87 = W, 38 = Up Arrow    
-    if (keyIsDown(87) || keyIsDown(38)) {
+    if (keyIsDown(87) || keyIsDown(38) || mouseIsPressed) {
         // Off Road
         if (playerX - carWidth / 2 < middle(playerY) - roadWidth(playerY) / 2 || playerX + carWidth / 2 > middle(playerY) + roadWidth(playerY) / 2) {
             playerSpeed = playerSpeed + acceleration > maxSpeed * 0.1 ? playerSpeed + acceleration : maxSpeed * 0.1;
@@ -202,11 +202,11 @@ function updatePlayer() {
 
     // Moving Laterally Logic
     // 65 = A, 37 = Left Arrow
-    if (keyIsDown(65) || keyIsDown(37)) {
+    if (keyIsDown(65) || keyIsDown(37) || (mouseIsPressed && mouseX < width * 0.4)) {
         playerX -= 4 / (playerSpeed + 1);
     }
     // 68 = D, 39 = Right Arrow
-    if (keyIsDown(68) || keyIsDown(39)) {
+    if (keyIsDown(68) || keyIsDown(39)|| (mouseIsPressed && mouseX > width * 0.6)) {
         playerX += 4 / (playerSpeed + 1);
     }
 }
